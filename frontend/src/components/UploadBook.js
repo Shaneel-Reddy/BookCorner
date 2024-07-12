@@ -25,7 +25,7 @@ const UploadBook = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    axios.post('http://localhost:8000/postbooks', form)
+    axios.post('https://bookcorner-jx21.onrender.com/postbooks', form)
       .then(response => {
         alert('Book submitted successfully!');
         setForm({

@@ -11,7 +11,7 @@ const Navbar = () => {
   const handleSearch = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.get(`http://localhost:8000/gbooks?q=${search}`);
+      const response = await axios.get(`https://bookcorner-jx21.onrender.com/gbooks?q=${search}`);
       navigate('/search-results', { state: { books: response.data } });
     } catch (error) {
       console.log(error);

@@ -8,7 +8,7 @@ const UsedBookList = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    axios.get('http://localhost:8000/usedbooks')
+    axios.get('https://bookcorner-jx21.onrender.com/usedbooks')
       .then(response => {
         setBooks(response.data);
         setLoading(false);
