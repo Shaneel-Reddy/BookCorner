@@ -1,0 +1,38 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; 
+    margin: 0;
+  }
+  
+  .footer-container {
+    width: 100%;
+    background-color: #f8f9fa;
+    padding-top: 1rem; 
+    padding-bottom: 1rem; 
+  }
+  
+  .container {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  
+  footer {
+    padding: 1rem 0;
+  }
+  
+  ul {
+    margin-bottom: 0;
+  }
+  
+  .nav-link {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+  }
+  
+  .text-body-secondary {
+    margin-top: 1rem;
+    font-size: 0.875rem;
+    color: #6c757d;
+  }
+  
