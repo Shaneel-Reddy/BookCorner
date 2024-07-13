@@ -13,7 +13,6 @@ import MembershipPage from './pages/MembershipPage';
 import UploadBook from './components/UploadBook';
 import AdminOrders from './components/AdminOrders';
 
-
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 

@@ -13,7 +13,7 @@ const AdminOrders = () => {
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const response = await axios.get('https://bookcorner-jx21.onrender.com/orders', {
+        const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/orders`, {
           withCredentials: true,
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`,

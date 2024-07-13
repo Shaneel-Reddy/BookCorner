@@ -5,7 +5,7 @@ import '../css_files/HorizontalCardScroller.css';
 const HorizontalCards = ({ cards }) => {
   const addToCart = async (bookId) => {
     try {
-      const response = await axios.post('https://bookcorner-jx21.onrender.com/cart/add', { bookId }, {
+      const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/cart/add`, { bookId }, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`
         }

@@ -36,7 +36,7 @@ const Sell = () => {
       Phone: cleanPhone
     }));
 
-    axios.post('https://bookcorner-jx21.onrender.com/submit', form)
+    axios.post(`${process.env.REACT_APP_BACKEND_URL}/submit`, form)
       .then(response => {
         alert('Book submitted successfully!');
         setForm({

@@ -27,7 +27,7 @@ function Signup() {
             return alert('Name, email, and password are required');
         }
         try {
-            const url = `https://bookcorner-jx21.onrender.com/auth/signup`;
+            const url = `${process.env.REACT_APP_BACKEND_URL}/auth/signup`;
             const response = await fetch(url, {
                 method: "POST",
                 headers: {

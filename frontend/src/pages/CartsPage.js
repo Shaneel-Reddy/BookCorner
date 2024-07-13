@@ -20,7 +20,7 @@ const CartPage = () => {
 
   const fetchBooksInCart = async () => {
     try {
-      const response = await axios.get('https://bookcorner-jx21.onrender.com/cart/get', {
+      const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/cart/get`, {
         withCredentials: true,
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -70,7 +70,7 @@ const CartPage = () => {
       }
 
       const response = await axios.post(
-        'https://bookcorner-jx21.onrender.com/order/addorder',
+        `${process.env.REACT_APP_BACKEND_URL}/order/addorder`,
         {
           bookId: formData.bookId,
           quantity: 1,
@@ -103,7 +103,7 @@ const CartPage = () => {
         throw new Error('User is not authenticated');
       }
 
-      const response = await axios.delete(`https://bookcorner-jx21.onrender.com/cart/remove/${bookId}`, {
+      const response = await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/cart/remove/${bookId}`, {
         headers: {
           Authorization: `Bearer ${token}`
         }

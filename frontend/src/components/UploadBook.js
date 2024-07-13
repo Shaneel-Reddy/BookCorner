@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import axios from 'axios';
 import Navbar from '../components/Navbar';
@@ -25,7 +24,7 @@ const UploadBook = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    axios.post('https://bookcorner-jx21.onrender.com/postbooks', form)
+    axios.post(`${process.env.REACT_APP_BACKEND_URL}/postbooks`, form)
       .then(response => {
         alert('Book submitted successfully!');
         setForm({
@@ -43,14 +42,14 @@ const UploadBook = () => {
   };
 
   return (
-    <div  style={{ fontFamily: 'Lato, sans-serif' }}>
+    <div style={{ fontFamily: 'Lato, sans-serif' }}>
       <Navbar />
       <div className="container-fluid">
         <div className="row">
           <SideNavbar />
           <main className="col-md-9 ms-sm-auto col-lg-10 px-md-4">
             <div className="container mt-4">
-              <h1>Best Sellers!</h1>
+              <h1>Sell Your Book</h1>
               <form className="row g-3" onSubmit={handleSubmit}>
                 <div className="col-md-6">
                   <label className="form-label">Book Name</label>
@@ -64,22 +63,22 @@ const UploadBook = () => {
                   <label className="form-label">Description</label>
                   <textarea name="description" value={form.description} onChange={handleChange} className="form-control" rows="3" placeholder="Enter book description" required></textarea>
                 </div>
-                <div className="form-floating col-md-4">
+                <div className="col-md-4">
+                  <label className="form-label">Expected Price</label>
                   <input type="text" name="price" value={form.price} onChange={handleChange} className="form-control" placeholder="Enter expected price" required />
-                  <label htmlFor="floatingPrice">Expected Price</label>
                 </div>
-                <div className="form-floating col-md-4">
+                <div className="col-md-4">
+                  <label className="form-label">Category</label>
                   <select name="category" value={form.category} onChange={handleChange} className="form-select" aria-label="Select book category" required>
                     <option value="">Genre</option>
                     <option value="fiction">Fiction</option>
-                    <option value="non-fiction">Comedy</option>
-                    <option value="biography">Fantasy</option>
+                    <option value="non-fiction">Non-Fiction</option>
+                    <option value="biography">Biography</option>
                   </select>
-                  <label htmlFor="floatingCategory">Category</label>
                 </div>
-                <div className="form-floating col-md-4">
-                  <input type="text" name="imageUrl" value={form.imageUrl} onChange={handleChange} className="form-control" placeholder="Enter ImageUrl" required />
-                  <label htmlFor="Imageurl">Enter Image Url</label>
+                <div className="col-md-4">
+                  <label className="form-label">Image URL</label>
+                  <input type="text" name="imageUrl" value={form.imageUrl} onChange={handleChange} className="form-control" placeholder="Enter Image URL" required />
                 </div>
                 <div className="col-12">
                   <button type="submit" className="btn btn-primary">Sell</button>

@@ -8,7 +8,7 @@ const HorizontalCardScroller = () => {
   useEffect(() => {
     const fetchBooks = async () => {
       try {
-        const response = await axios.get('https://bookcorner-jx21.onrender.com/getbooks');
+        const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/getbooks`);
         setCards(response.data);
       } catch (error) {
         console.error('Error fetching books', error);
@@ -23,7 +23,7 @@ const HorizontalCardScroller = () => {
       if (!token) {
         throw new Error('User is not authenticated');
       }
-      const response = await axios.post('https://bookcorner-jx21.onrender.com/cart/add', { bookId, quantity: 1 }, {
+      const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/cart/add`, { bookId, quantity: 1 }, {
         headers: {
           Authorization: `Bearer ${token}`
         }
