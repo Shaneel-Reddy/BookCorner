@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { BsSearch } from 'react-icons/bs'; 
@@ -6,7 +6,15 @@ import logo from '../img/logo.png';
 
 const Navbar = () => {
   const [search, setSearch] = useState('');
+  const [isAdmin, setIsAdmin] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+    if (loggedInUser && loggedInUser.isAdmin) {
+      setIsAdmin(true);
+    }
+  }, []);
 
   const handleSearch = async (event) => {
     event.preventDefault();
@@ -54,9 +62,11 @@ const Navbar = () => {
               <li className="nav-item">
                 <Link className="nav-link" to="/membership">Membership</Link>
               </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/admin">Admin</Link>
-              </li>
+              {isAdmin && (
+                <li className="nav-item">
+                  <Link className="nav-link" to="/admin">Admin</Link>
+                </li>
+              )}
             </ul>
             <form className="d-flex justify-content-center align-items-center mx-auto" role="search" onSubmit={handleSearch}>
               <div className="input-group" style={{ width: '700px' }}>

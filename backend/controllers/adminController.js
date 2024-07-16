@@ -1,5 +1,3 @@
-// ordersController.js
-
 const Order = require('../models/order'); 
 
 const getOrders = async (req, res) => {

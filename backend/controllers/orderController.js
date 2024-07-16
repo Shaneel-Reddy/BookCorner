@@ -1,5 +1,3 @@
-// controllers/orderController.js
-
 const Order = require('../models/order');
 
 

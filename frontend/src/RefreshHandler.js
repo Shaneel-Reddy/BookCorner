@@ -1,25 +1,28 @@
-import  { useEffect } from 'react'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-function RefrshHandler({ setIsAuthenticated }) {
-    const location = useLocation();
-    const navigate = useNavigate();
+const RefreshHandler = ({ setIsAuthenticated, setIsAdmin }) => {
+  const navigate = useNavigate();
 
-    useEffect(() => {
-        if (localStorage.getItem('token')) {
-            setIsAuthenticated(true);
-            if (location.pathname === '/' ||
-                location.pathname === '/login' ||
-                location.pathname === '/signup'
-            ) {
-                navigate('/home', { replace: false });
-            }
-        }
-    }, [location, navigate, setIsAuthenticated])
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    const loggedInUser = localStorage.getItem('loggedInUser');
 
-    return (
-        null
-    )
-}
+    if (token && loggedInUser) {
+      try {
+        const user = JSON.parse(loggedInUser);
+        setIsAuthenticated(true);
+        setIsAdmin(user.isAdmin);
+      } catch (error) {
+        console.error('Error parsing JSON:', error);
+        localStorage.removeItem('token');
+        localStorage.removeItem('loggedInUser');
+        navigate('/login');
+      }
+    }
+  }, [setIsAuthenticated, setIsAdmin, navigate]);
 
-export default RefrshHandler
+  return null;
+};
+
+export default RefreshHandler;
