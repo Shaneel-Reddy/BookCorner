@@ -3,7 +3,7 @@ const Order = require('../models/order');
 
 exports.addToOrder = async (req, res) => {
   try {
-    const { bookId, quantity, type, Name, Address, city, state, Phone } = req.body; // Include new fields here
+    const { bookId, quantity, type, Name, Address, city, state, Phone } = req.body; 
     const userId = req.user._id;
 
     let order = await Order.findOne({ userId });
@@ -53,21 +53,3 @@ exports.getOrders = async (req, res) => {
     res.status(500).json({ success: false, message: 'Server Error' });
   }
 };
-{/*
-exports.getBooksInCart = async (req, res) => {
-  try {
-    const userId = req.user._id;
-    
-    const cart = await Cart.findOne({ userId }).populate('items.bookId'); 
-
-    if (!cart) {
-      return res.status(404).json({ message: 'Cart not found' });
-    }
-
-    res.status(200).json({ success: true, books: cart.items });
-  } catch (err) {
-    console.error(err.message);
-    res.status(500).json({ success: false, message: 'Server Error' });
-  }
-};
-*/}
