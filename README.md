@@ -42,7 +42,10 @@ Database: MongoDB
 APIs: Integration with Google Books API for book information
 
 ## Contributors
-Shaneel Reddy
+L Shaneel Reddy
+
 Swarna Vinuthna
+
 Kotla Mahitha Reddy
+
 Allwin
